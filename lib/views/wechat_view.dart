@@ -168,15 +168,7 @@ class _WeChatViewState extends State<WeChatView> {
 
   _formatTime(int datetime) {
     var date = new DateTime.fromMillisecondsSinceEpoch(datetime);
-    var nowDate = new DateTime.now();
-    var diff = nowDate.difference(date);
-    if (diff.inDays == 1) {
-      return "昨天";
-    } else if (diff.inDays < 1) {
-      return "${date.hour}:${date.minute}";
-    } else if (nowDate.year != date.year || nowDate.month != date.month) {
-      return "${date.year}/${date.month}/${date.day}";
-    }
+    return "${date.hour}:${date.minute}";
   }
 
   _buildListItem(int index) {

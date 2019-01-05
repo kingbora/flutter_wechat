@@ -6,36 +6,17 @@ import '../views/contact_view.dart' show ContactView;
 import '../views/me_view.dart' show MeView;
 
 class NavigationIconView {
-  NavigationIconView({Key key, String title, int iconCode, int activeIconCode})
-      : _title = title,
-        _iconCode = iconCode,
-        _activeIconCode = activeIconCode,
-        item = BottomNavigationBarItem(
-          icon: Icon(
-            IconData(
-              iconCode,
-              fontFamily: AppFonts.FontFamily,
-            ),
-            color: Color(AppColors.TabNormalColor),
-          ),
-          title: Text(
-            title,
-            style: TextStyle(color: Color(AppColors.TabNormalColor)),
-          ),
-          activeIcon: Icon(
-            IconData(
-              activeIconCode,
-              fontFamily: AppFonts.FontFamily,
-            ),
-            color: Color(AppColors.TabActiveColor),
-          ),
-          backgroundColor: Colors.white,
-        );
+  NavigationIconView(
+      {Key key, String title, int iconCode, int activeIconCode, int index})
+      : title = title,
+        iconCode = iconCode,
+        activeIconCode = activeIconCode,
+        index = index;
 
-  final String _title;
-  final int _iconCode;
-  final int _activeIconCode;
-  final BottomNavigationBarItem item;
+  final String title;
+  final int iconCode;
+  final int activeIconCode;
+  final int index;
 }
 
 class HomeScreen extends StatefulWidget {
@@ -62,21 +43,25 @@ class _HomeScreenState extends State<HomeScreen> {
         title: '微信',
         iconCode: 0xe600,
         activeIconCode: 0xe61b,
+        index: 0,
       ),
       NavigationIconView(
         title: '通讯录',
         iconCode: 0xe601,
         activeIconCode: 0xe606,
+        index: 1,
       ),
       NavigationIconView(
         title: '发现',
         iconCode: 0xe602,
         activeIconCode: 0xe8c0,
+        index: 2,
       ),
       NavigationIconView(
         title: '我',
         iconCode: 0xe67b,
         activeIconCode: 0xe67c,
+        index: 3,
       ),
     ];
 
@@ -113,9 +98,34 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final bottomNavigationBar = BottomNavigationBar(
-      items: _navigationViews
-          .map((NavigationIconView viewItem) => viewItem.item)
-          .toList(),
+      items: _navigationViews.map((NavigationIconView viewItem) {
+        return BottomNavigationBarItem(
+          icon: Icon(
+            IconData(
+              viewItem.iconCode,
+              fontFamily: AppFonts.FontFamily,
+            ),
+            color: Color(AppColors.TabNormalColor),
+          ),
+          title: Text(
+            viewItem.title,
+            style: TextStyle(
+              fontSize: 13.0,
+              color: Color(_currentIndex == viewItem.index
+                  ? AppColors.TabActiveColor
+                  : AppColors.TabNormalColor),
+            ),
+          ),
+          activeIcon: Icon(
+            IconData(
+              viewItem.activeIconCode,
+              fontFamily: AppFonts.FontFamily,
+            ),
+            color: Color(AppColors.TabActiveColor),
+          ),
+          backgroundColor: Colors.white,
+        );
+      }).toList(),
       currentIndex: _currentIndex,
       onTap: (int index) {
         setState(() {
