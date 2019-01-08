@@ -145,7 +145,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       AppBar(
         elevation: 0,
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.white,
         actions: <Widget>[
           IconButton(
             icon: Icon(
