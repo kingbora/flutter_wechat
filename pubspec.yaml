@@ -37,6 +37,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/portrait/
+    - assets/images/avatar/
   fonts:
     - family: IconFont
       fonts:

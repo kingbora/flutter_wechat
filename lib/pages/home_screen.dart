@@ -33,6 +33,7 @@ enum ActionItemsType {
 class _HomeScreenState extends State<HomeScreen> {
   PageController _pageController;
   List<NavigationIconView> _navigationViews;
+  List<AppBar> _appBar;
   List<Widget> pages;
   int _currentIndex = 0;
 
@@ -65,6 +66,100 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     ];
 
+    _appBar = [
+      AppBar(
+        elevation: 0,
+        title: const Text(
+          "微信",
+          style: TextStyle(
+            color: Color(AppColors.TabNormalColor),
+          ),
+        ),
+        centerTitle: true,
+        actions: <Widget>[
+          PopupMenuButton(
+            itemBuilder: (BuildContext context) {
+              return <PopupMenuItem<ActionItemsType>>[
+                PopupMenuItem(
+                  child: _buildPopupMenuItem(0xe61b, "发起群聊"),
+                  value: ActionItemsType.GROUP_CHAT,
+                ),
+                PopupMenuItem(
+                  child: _buildPopupMenuItem(0xe629, "添加朋友"),
+                  value: ActionItemsType.ADD_FRIEND,
+                ),
+                PopupMenuItem(
+                  child: _buildPopupMenuItem(0xe634, "扫一扫"),
+                  value: ActionItemsType.QR_SCAN,
+                ),
+                PopupMenuItem(
+                  child: _buildPopupMenuItem(0xe603, "收付款"),
+                  value: ActionItemsType.PAYMENT,
+                ),
+              ];
+            },
+            icon: Icon(
+              IconData(
+                0xe642,
+                fontFamily: AppFonts.FontFamily,
+              ),
+              color: Color(AppColors.TabNormalColor),
+            ),
+            onSelected: (ActionItemsType type) {
+              print(type);
+            },
+          )
+        ],
+      ),
+      AppBar(
+        elevation: 0,
+        title: const Text(
+          "通讯录",
+          style: TextStyle(
+            color: Color(AppColors.TabNormalColor),
+          ),
+        ),
+        centerTitle: true,
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(
+              IconData(
+                0xe629,
+                fontFamily: AppFonts.FontFamily,
+              ),
+            ),
+            color: Color(AppColors.TabNormalColor),
+            onPressed: () {},
+          ),
+        ],
+      ),
+      AppBar(
+        elevation: 0,
+        title: const Text(
+          "发现",
+          style: TextStyle(
+            color: Color(AppColors.TabNormalColor),
+          ),
+        ),
+        centerTitle: true,
+      ),
+      AppBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(
+              IconData(
+                0xe609,
+                fontFamily: AppFonts.FontFamily,
+              ),
+            ),
+            color: Color(AppColors.TabNormalColor),
+            onPressed: () {},
+          ),
+        ],
+      )
+    ];
     _pageController = PageController(initialPage: _currentIndex);
     pages = [WeChatView(), ContactView(), DiscoverView(), MeView()];
   }
@@ -141,50 +236,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
 
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        title: const Text(
-          "微信",
-          style: TextStyle(
-            color: Color(AppColors.TabNormalColor),
-          ),
-        ),
-        centerTitle: true,
-        actions: <Widget>[
-          PopupMenuButton(
-            itemBuilder: (BuildContext context) {
-              return <PopupMenuItem<ActionItemsType>>[
-                PopupMenuItem(
-                  child: _buildPopupMenuItem(0xe61b, "发起群聊"),
-                  value: ActionItemsType.GROUP_CHAT,
-                ),
-                PopupMenuItem(
-                  child: _buildPopupMenuItem(0xe629, "添加朋友"),
-                  value: ActionItemsType.ADD_FRIEND,
-                ),
-                PopupMenuItem(
-                  child: _buildPopupMenuItem(0xe634, "扫一扫"),
-                  value: ActionItemsType.QR_SCAN,
-                ),
-                PopupMenuItem(
-                  child: _buildPopupMenuItem(0xe603, "收付款"),
-                  value: ActionItemsType.PAYMENT,
-                ),
-              ];
-            },
-            icon: Icon(
-              IconData(
-                0xe642,
-                fontFamily: AppFonts.FontFamily,
-              ),
-              color: Color(AppColors.TabNormalColor),
-            ),
-            onSelected: (ActionItemsType type) {
-              print(type);
-            },
-          )
-        ],
-      ),
+      appBar: _appBar[_currentIndex],
       body: PageView.builder(
         itemBuilder: (BuildContext context, int index) {
           return pages[index];

@@ -144,6 +144,11 @@ class _WeChatViewState extends State<WeChatView> {
         decoration: InputDecoration(
           fillColor: Colors.white,
           filled: true,
+          hintText: "搜索",
+          hintStyle: TextStyle(
+            color: Color(AppColors.ListItemSecondColor),
+            fontSize: 12.0,
+          ),
           contentPadding: const EdgeInsets.all(10.0),
           border: OutlineInputBorder(
             borderSide: BorderSide(
