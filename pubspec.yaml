@@ -38,6 +38,7 @@ flutter:
   assets:
     - assets/images/portrait/
     - assets/images/avatar/
+    - assets/images/discover/
   fonts:
     - family: IconFont
       fonts:
