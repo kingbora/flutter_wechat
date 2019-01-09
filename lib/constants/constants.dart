@@ -11,4 +11,5 @@ class AppColors {
   static const ListItemHeaderColor = 0xFF0A0A0A;
   static const ListItemSecondColor = 0xFFA5A5A5;
   static const ListItemThirdColor = 0xFFB5B5B5;
+  static const ListItemTapColor = 0xFFE4E4E4;
 }

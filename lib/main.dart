@@ -7,6 +7,7 @@ void main() => runApp(MaterialApp(
       theme: ThemeData.light().copyWith(
         primaryColor: Color(AppColors.AppBarColor),
         cardColor: Color(AppColors.PopupMenuBackgroundColor),
+        dividerColor: Color(AppColors.BorderColor),
       ),
       home: HomeScreen(),
     ));
