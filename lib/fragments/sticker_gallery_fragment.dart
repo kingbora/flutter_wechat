@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import '../components/custom_app_bar.dart';
 
 class StickerGalleryFragment extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: Icon(Icons.chevron_left),
-        title: Text("表情"),
+      appBar: CustomAppBar(
+        title: "表情",
       ),
       body: Center(
         child: Text("表情"),

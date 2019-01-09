@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import '../components/custom_app_bar.dart';
 
 class FavoritesFragment extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: Icon(Icons.chevron_left),
-        title: Text("收藏"),
+      appBar: CustomAppBar(
+        title: "收藏",
       ),
       body: Center(
         child: Text("收藏"),

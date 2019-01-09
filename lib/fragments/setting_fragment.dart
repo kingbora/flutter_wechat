@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import '../components/custom_app_bar.dart';
 
 class SettingFragment extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: Icon(Icons.chevron_left),
-        title: Text("设置"),
+      appBar: CustomAppBar(
+        title: "设置",
       ),
       body: Center(
         child: Text("设置"),

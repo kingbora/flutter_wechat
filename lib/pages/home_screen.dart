@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../constants/constants.dart' show AppFonts, AppColors;
+import '../constants/constants.dart' show AppFonts, AppColors, CustomTextStyle;
 import '../views/wechat_view.dart' show WeChatView;
 import '../views/discover_view.dart' show DiscoverView;
 import '../views/contact_view.dart' show ContactView;
@@ -71,9 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
         elevation: 0,
         title: const Text(
           "微信",
-          style: TextStyle(
-            color: Color(AppColors.TabNormalColor),
-          ),
+          style: CustomTextStyle.AppBarTitleStyle,
         ),
         centerTitle: true,
         actions: <Widget>[
@@ -103,7 +101,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 0xe642,
                 fontFamily: AppFonts.FontFamily,
               ),
-              color: Color(AppColors.TabNormalColor),
+              color: Color(AppColors.AppBarTextColor),
             ),
             onSelected: (ActionItemsType type) {
               print(type);
@@ -115,9 +113,7 @@ class _HomeScreenState extends State<HomeScreen> {
         elevation: 0,
         title: const Text(
           "通讯录",
-          style: TextStyle(
-            color: Color(AppColors.TabNormalColor),
-          ),
+          style: CustomTextStyle.AppBarTitleStyle,
         ),
         centerTitle: true,
         actions: <Widget>[
@@ -128,7 +124,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 fontFamily: AppFonts.FontFamily,
               ),
             ),
-            color: Color(AppColors.TabNormalColor),
+            color: Color(AppColors.AppBarTextColor),
             onPressed: () {},
           ),
         ],
@@ -137,9 +133,7 @@ class _HomeScreenState extends State<HomeScreen> {
         elevation: 0,
         title: const Text(
           "发现",
-          style: TextStyle(
-            color: Color(AppColors.TabNormalColor),
-          ),
+          style: CustomTextStyle.AppBarTitleStyle,
         ),
         centerTitle: true,
       ),
@@ -154,7 +148,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 fontFamily: AppFonts.FontFamily,
               ),
             ),
-            color: Color(AppColors.TabNormalColor),
+            color: Color(AppColors.AppBarTextColor),
             onPressed: () {},
           ),
         ],
